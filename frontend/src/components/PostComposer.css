@@ -1,0 +1,184 @@
+/* ============================================================
+   PostComposer — LinkedIn-style white card
+   ============================================================ */
+
+.composer-card {
+  background: var(--bg-card);
+  border-radius: var(--r-lg);
+  box-shadow: var(--card-shadow);
+  overflow: hidden;
+}
+
+/* Top section: avatar + pill input */
+.composer-top {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 16px 12px;
+}
+
+.composer-avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1.5px solid var(--border);
+  background: #f1f0eb;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  flex-shrink: 0;
+}
+
+.composer-avatar.anon { border-color: var(--anon-color); }
+
+/* "Start a post" pill — LinkedIn-style */
+.composer-pill {
+  flex: 1;
+  padding: 11px 16px;
+  border-radius: var(--r-pill);
+  border: 1.5px solid var(--border);
+  background: transparent;
+  font-size: 14px;
+  color: var(--text-1);
+  font-weight: 500;
+  text-align: left;
+  transition: border-color var(--speed) var(--ease), background var(--speed) var(--ease);
+  cursor: pointer;
+}
+.composer-pill:hover { border-color: var(--text-2); background: var(--bg-hover); }
+
+/* Expanded textarea (shown when composing) */
+.composer-expand {
+  padding: 0 16px 12px;
+  border-top: 1px solid var(--border-card);
+  animation: slide-up 0.2s var(--ease);
+}
+
+/* Anon toggle row */
+.anon-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 0 10px;
+}
+
+.anon-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 12px;
+  border-radius: var(--r-pill);
+  font-size: 12px;
+  font-weight: 600;
+  border: 1.5px solid;
+  transition: all var(--speed) var(--ease);
+}
+.anon-btn.on  { color: var(--anon-color); border-color: var(--anon-color); background: var(--anon-bg); }
+.anon-btn.off { color: var(--text-2);     border-color: var(--border);     background: transparent; }
+.anon-btn:hover { opacity: 0.8; }
+
+.anon-hint {
+  font-size: 12px;
+  color: var(--text-3);
+  line-height: 1.4;
+}
+
+/* PII warning */
+.pii-warning {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  background: #fff5f5;
+  border: 1px solid #fecaca;
+  border-radius: var(--r-md);
+  padding: 10px 12px;
+  margin-bottom: 10px;
+  font-size: 13px;
+  color: #b91c1c;
+  line-height: 1.5;
+  animation: slide-up 0.2s var(--ease);
+}
+
+/* Main textarea */
+.composer-textarea {
+  width: 100%;
+  min-height: 80px;
+  font-size: 15px;
+  color: var(--text-0);
+  line-height: 1.55;
+  padding: 4px 0;
+  margin-bottom: 12px;
+}
+
+/* Tag pills */
+.composer-tags {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 14px;
+  flex-wrap: wrap;
+}
+
+.tag-pill {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  border: 1.5px solid var(--border);
+  border-radius: var(--r-pill);
+  padding: 5px 12px;
+  font-size: 13px;
+  color: var(--text-2);
+  background: var(--bg-input);
+  transition: border-color var(--speed) var(--ease);
+}
+.tag-pill:focus-within { border-color: var(--red); }
+.tag-pill svg { opacity: 0.5; flex-shrink: 0; }
+.tag-input { width: 110px; font-size: 13px; color: var(--text-0); background: transparent; }
+
+/* Bottom toolbar — like LinkedIn's Video/Photo/Write Article bar */
+.composer-toolbar {
+  display: flex;
+  align-items: center;
+  border-top: 1px solid var(--border-card);
+  padding: 4px 8px;
+}
+
+.toolbar-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 12px;
+  border-radius: var(--r-sm);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-2);
+  transition: background var(--speed) var(--ease), color var(--speed) var(--ease);
+}
+.toolbar-btn:hover { background: var(--bg-hover); color: var(--text-0); }
+.toolbar-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+
+.toolbar-spacer { flex: 1; }
+
+/* Char counter */
+.char-count {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-3);
+  margin-right: 10px;
+}
+.char-count.warn   { color: var(--warn-color); }
+.char-count.danger { color: var(--danger-color); }
+
+/* Submit */
+.submit-btn {
+  padding: 7px 18px;
+  border-radius: var(--r-pill);
+  background: var(--red);
+  color: #fff;
+  font-weight: 700;
+  font-size: 14px;
+  border: 1.5px solid var(--red);
+  transition: background var(--speed) var(--ease), box-shadow var(--speed) var(--ease);
+}
+.submit-btn:hover { background: var(--red-dark); box-shadow: 0 2px 8px var(--red-glow); }
+.submit-btn:disabled { opacity: 0.4; cursor: not-allowed; }

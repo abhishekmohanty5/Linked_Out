@@ -1,0 +1,129 @@
+/* ============================================================
+   LinkedOut — LinkedIn-style White Design System
+   White canvas · Card surfaces · Red accent (#CC1016)
+   ============================================================ */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  /* Canvas — LinkedIn's exact background */
+  --bg:          #F3F2EF;
+  --bg-card:     #FFFFFF;
+  --bg-hover:    #F5F5F5;
+  --bg-input:    #EEF3F8;
+
+  /* Borders */
+  --border:      rgba(0,0,0,0.12);
+  --border-card: rgba(0,0,0,0.08);
+
+  /* Typography */
+  --text-0:  rgba(0,0,0,0.9);
+  --text-1:  rgba(0,0,0,0.75);
+  --text-2:  rgba(0,0,0,0.55);
+  --text-3:  rgba(0,0,0,0.38);
+
+  /* Red accent — premium LinkedOut brand */
+  --red:        #CC1016;
+  --red-dark:   #A50D12;
+  --red-light:  #F8D7D8;
+  --red-muted:  rgba(204,16,22,0.08);
+  --red-glow:   rgba(204,16,22,0.15);
+
+  /* Nav */
+  --nav-h: 52px;
+
+  /* Semantic */
+  --like-color:   #CC1016;
+  --share-color:  #057642;
+  --anon-color:   #7B61FF;
+  --anon-bg:      rgba(123,97,255,0.08);
+  --warn-color:   #B24020;
+  --danger-color: #CC1016;
+
+  /* Card */
+  --card-shadow: 0 0 0 1px var(--border-card), 0 2px 4px rgba(0,0,0,0.06);
+  --card-shadow-hover: 0 0 0 1px rgba(0,0,0,0.14), 0 4px 12px rgba(0,0,0,0.10);
+
+  /* Radius */
+  --r-sm:   6px;
+  --r-md:   10px;
+  --r-lg:   14px;
+  --r-pill: 9999px;
+
+  --ease:  cubic-bezier(0.23,1,0.32,1);
+  --speed: 180ms;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text-0);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: var(--red); text-decoration: none; }
+a:hover { text-decoration: underline; color: var(--red-dark); }
+button { cursor: pointer; border: none; background: none; font-family: inherit; font-size: inherit; color: inherit; }
+input, textarea {
+  background: transparent; border: none; outline: none;
+  color: var(--text-0); font-family: inherit; font-size: inherit; resize: none;
+}
+input::placeholder, textarea::placeholder { color: var(--text-3); }
+
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
+
+/* ── Card utility ── */
+.card {
+  background: var(--bg-card);
+  border-radius: var(--r-lg);
+  box-shadow: var(--card-shadow);
+  overflow: hidden;
+}
+
+/* ── Button utilities ── */
+.btn-primary {
+  display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+  padding: 8px 20px;
+  border-radius: var(--r-pill);
+  background: var(--red);
+  color: #fff;
+  font-weight: 600;
+  font-size: 14px;
+  border: 1.5px solid var(--red);
+  transition: background var(--speed) var(--ease), box-shadow var(--speed) var(--ease);
+}
+.btn-primary:hover { background: var(--red-dark); border-color: var(--red-dark); box-shadow: 0 2px 8px var(--red-glow); }
+
+.btn-outline {
+  display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+  padding: 7px 18px;
+  border-radius: var(--r-pill);
+  background: transparent;
+  color: var(--red);
+  font-weight: 600;
+  font-size: 14px;
+  border: 1.5px solid var(--red);
+  transition: background var(--speed) var(--ease);
+}
+.btn-outline:hover { background: var(--red-muted); }
+
+/* ── Animations ── */
+@keyframes slide-up {
+  from { opacity:0; transform:translateY(12px); }
+  to   { opacity:1; transform:translateY(0);    }
+}
+.animate-in { animation: slide-up 0.25s var(--ease) both; }
+
+/* ── Divider ── */
+.divider {
+  height: 1px;
+  background: var(--border-card);
+  margin: 0;
+}
